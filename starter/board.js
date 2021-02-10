@@ -12,11 +12,20 @@ class Board {
   populateGrid() {
     // TODO: Using the instance variables numRows, numCols, and numShips, return
     // a 2D array representing the state of the board.
+
     this.grid = [];
-    for (let i = 0; i < this.numRows.length; i++) {
-      for (let j = 0; j < this.numCols.length; j++) {
-        grid[i][j] = "";
+    this.destroyed = 'h';
+    this.undamaged = 's';
+    this.empty = 'null';
+    this.hit = 'h';
+    this.miss = 'x'
+
+    for (let i = 0; i < this.numRows; i++) {
+      let row = [];
+      for (let j = 0; j < this.numCols; j++) {
+        row.push('');
       }
+      this.grid.push(row);
     }
 
   }
@@ -25,6 +34,8 @@ class Board {
     // TODO: Print the game board with marks on any spaces that have been fired
     // upon. Be sure not to display the unhit ships to the user! Hint: you might
     // be able to use console.table()
+
+    console.table(this.grid);
   }
 
   count() {
@@ -49,7 +60,7 @@ class Board {
 
 
 
-let test = new Board (8, 8, 6);
-test.populateGrid()
-
+let test = new Board (3, 3, 6);
+test.populateGrid();
+test.display();
 module.exports = Board;

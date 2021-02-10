@@ -32,6 +32,7 @@ class HumanPlayer {
     this.rl.close();
   }
 
+  
 }
 
 module.exports = HumanPlayer;
