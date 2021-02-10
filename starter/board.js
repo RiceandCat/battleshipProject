@@ -85,17 +85,40 @@ class Board {
   isValidMove(pos) {
     // TODO: Take in an attack position (in the form of an array [row, col]) and
     // return true if the position is a valid move.
-    if(pos[0] === "number")
+    for (let i = 0; i < pos.length; i++) {
+      if (typeof pos[0] !== "number") {
+        return false;
+      }
+    }
+    return true;
   }
 
   isGameOver() {
     // TODO: Return true if the game is over (when all ships are hit).
+    if (this.shipNum === 0) {
+      return true;
+    }
   }
 
-  attack() {
+  attack(pos) {
     // TODO: Take in an attack position in the form of an array, [row, col], as
     // a parameter. Update this.grid depending on if the position is an empty
     // space or a damaged ship.
+
+    // Let row of pos array = variable 
+    // Let col of pos array = variable 
+    // if this.grid === "h" then make that grid item hit
+    // else if "x" for miss 
+
+    let rowInput = pos[0];
+    let colInput = pos[1];
+
+    if (this.grid[rowInput][colInput] === this.undamged) {
+      this.grid[rowInput][colInput] = this.hit;
+    } else if (this.grid[rowInput][colInput] === this.empty) {
+      this.grid[rowInput][colInput] = this.miss;
+    }
+
   }
 }
 
