@@ -1,13 +1,24 @@
 class Board {
-  constructor() {
+  constructor(numRows, numCols, numShips) {
     // TODO: Set up constructor that sets the numRos, numCols, and numShips.
     // TODO: Set this.grid equal to the return value of the instance method
     // populateGrid().
+    this.numRows = numRows;
+    this.numCols = numCols;
+    this.numShips = numShips;
+
   }
 
   populateGrid() {
     // TODO: Using the instance variables numRows, numCols, and numShips, return
     // a 2D array representing the state of the board.
+    this.grid = [];
+    for (let i = 0; i < this.numRows.length; i++) {
+      for (let j = 0; j < this.numCols.length; j++) {
+        grid[i][j] = "";
+      }
+    }
+
   }
 
   display() {
@@ -35,5 +46,10 @@ class Board {
     // space or a damaged ship.
   }
 }
+
+
+
+let test = new Board (8, 8, 6);
+test.populateGrid()
 
 module.exports = Board;
