@@ -19,6 +19,7 @@ class Board {
     this.empty = 'null';
     this.hit = 'h';
     this.miss = 'x'
+    this.ship = ship;
 
     for (let i = 0; i < this.numRows; i++) {
       let row = [];
@@ -26,6 +27,27 @@ class Board {
         row.push('');
       }
       this.grid.push(row);
+    }
+    // To get function that returns a random number
+    // Call our function and pass in this.numRows and this.numCols
+    // We want to fill in matrix with certain amaoutn of ships
+    // We'll use a while loop
+    // We will have an if statement to check if there is a ship there or if its empty
+    // If its empty populate a ship there, else keep going 
+
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * Math.floor(max));
+    }
+    
+    let counter = 0;
+
+    while (counter <= this.numShips) {
+      let randomRows = getRandomInt(this.numRows);
+      let randomCols = getRandomInt(this.numCols);
+      if (this.grid[randomRows][randomCols] === "") {
+        this.grid[randomRows][randomCols] = this.undamaged;
+        counter ++;
+      }
     }
 
   }
