@@ -18,8 +18,7 @@ class Board {
     this.undamaged = 's';
     this.empty = 'null';
     this.hit = 'h';
-    this.miss = 'x'
-    this.ship = ship;
+    this.miss = 'x';
 
     for (let i = 0; i < this.numRows; i++) {
       let row = [];
@@ -44,6 +43,7 @@ class Board {
     while (counter <= this.numShips) {
       let randomRows = getRandomInt(this.numRows);
       let randomCols = getRandomInt(this.numCols);
+
       if (this.grid[randomRows][randomCols] === "") {
         this.grid[randomRows][randomCols] = this.undamaged;
         counter ++;
@@ -56,17 +56,36 @@ class Board {
     // TODO: Print the game board with marks on any spaces that have been fired
     // upon. Be sure not to display the unhit ships to the user! Hint: you might
     // be able to use console.table()
+    let gridCopy = [];
+
+    for(let i = 0; i < this.numRows; i ++) {
+      let rowCopy = [...this.grid[i]];
+      gridCopy.push(rowCopy);
+    }
+
+    for(let i = 0; i < this.numRows; i++) {
+      for(let j = 0; j < this.numCols; j++) {
+        if(this.grid[i][j] === '') {
+          this.grid[i][j] = '~';
+        } 
+        if(this.grid[i][j] === 's') {
+          this.grid[i][j] = '~';
+        }
+      }
+    }
 
     console.table(this.grid);
   }
 
   count() {
     // TODO: Return the number of valid targets (ships) remaining.
+    return this.numShips;
   }
 
   isValidMove(pos) {
     // TODO: Take in an attack position (in the form of an array [row, col]) and
     // return true if the position is a valid move.
+    if(pos[0] === "number")
   }
 
   isGameOver() {
@@ -82,7 +101,7 @@ class Board {
 
 
 
-let test = new Board (3, 3, 6);
+let test = new Board (5, 5, 6);
 test.populateGrid();
 test.display();
 module.exports = Board;
