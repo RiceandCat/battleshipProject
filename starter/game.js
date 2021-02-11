@@ -1,5 +1,5 @@
 class BattleshipGame {
-  constructor() {
+  constructor(player1, numRows, numCols, numShips) {
     // TODO: Set up constructor to store reference to the humanPlayer and
     // instantiate a new instance of the Board class and set it to this.board.
     // Remember to import your Board class.
